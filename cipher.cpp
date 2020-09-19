@@ -21,8 +21,8 @@ auto shiftCipher(const Mode &mode, const std::string &str, const int &shift)
     for (size_t i = 0; i < str.length(); i++) {
       char c = str[i] - shift;
       c = c - (c < PRINTABLE_START_CODE ? PRINTABLE_START_CODE : 0);
-      chr[i] =
-          c > 0 ? c : ((c % MAX_ASCII_CODE + MAX_ASCII_CODE) % MAX_ASCII_CODE);
+      chr[i] = c > 0 ? c % MAX_ASCII_CODE
+                     : ((c % MAX_ASCII_CODE + MAX_ASCII_CODE) % MAX_ASCII_CODE);
     }
   }
   return std::string(chr.data());
